@@ -4,7 +4,7 @@
     ViewBag.Title = "CreateUpdateEmp";
 }
 
-<h2>CreateUpdateEmp</h2>
+
 
 
 @using (Html.BeginForm("CreateUpdateEmp","Emp")) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Employee</h4>
+       
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -30,7 +30,7 @@
                 @Html.ValidationMessageFor(model => model.EmployeeData.Email, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        @Html.HiddenFor(model=> model.EmployeeData.EmployeeId)
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -52,12 +52,15 @@
         <td>
             @item.Email
         </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId})
+        </td>
+        <td>
+            @Html.ActionLink("Delete","Delete",new {id=item.EmployeeId })
+        </td>
     </tr>
     }
 </table>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

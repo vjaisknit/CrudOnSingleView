@@ -26,10 +26,39 @@ namespace CrudOnSingleView.Controllers
         [HttpPost]
         public ActionResult CreateUpdateEmp(EmployeeDTO employee)
         {
+            if(employee.EmployeeData.EmployeeId==0)
+            {
+                _db.Employees.Add(employee.EmployeeData);
+                _db.SaveChanges();
+            }
+            else
+            {
+              var dataInDb=  _db.Employees.FirstOrDefault(a => a.EmployeeId == employee.EmployeeData.EmployeeId);
+                dataInDb.Name = employee.EmployeeData.Name;
+                dataInDb.Email = employee.EmployeeData.Email;
+                _db.SaveChanges();
+            }
+            
+            return RedirectToAction("CreateUpdateEmp");
+        }
 
-            _db.Employees.Add(employee.EmployeeData);
+        public ActionResult Delete(int id)
+        {
+          var dataForDelete=  _db.Employees.FirstOrDefault(a => a.EmployeeId == id);
+            _db.Employees.Remove(dataForDelete);
             _db.SaveChanges();
             return RedirectToAction("CreateUpdateEmp");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var empdata = new EmployeeDTO()
+            {
+                EmployeeList = _db.Employees.ToList(),
+                EmployeeData= _db.Employees.FirstOrDefault(a => a.EmployeeId == id)
+            };
+
+            return View("CreateUpdateEmp", empdata);
         }
 
     }
