@@ -94,6 +94,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\CrudOnSingleView.Models.DataContext.mdf" />
+    <Content Include="App_Data\CrudOnSingleView.Models.DataContext_log.ldf">
+      <DependentUpon>CrudOnSingleView.Models.DataContext.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -117,13 +121,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\MenuMst.cs" />
     <Compile Include="Controllers\EmpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811171644514_initial.cs" />
-    <Compile Include="Migrations\201811171644514_initial.Designer.cs">
-      <DependentUpon>201811171644514_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201811221431266_addMenu.cs" />
+    <Compile Include="Migrations\201811221431266_addMenu.Designer.cs">
+      <DependentUpon>201811221431266_addMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221445366_addMenu1.cs" />
+    <Compile Include="Migrations\201811221445366_addMenu1.Designer.cs">
+      <DependentUpon>201811221445366_addMenu1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
@@ -146,11 +155,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811171644514_initial.resx">
-      <DependentUpon>201811171644514_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811221431266_addMenu.resx">
+      <DependentUpon>201811221431266_addMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221445366_addMenu1.resx">
+      <DependentUpon>201811221445366_addMenu1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
